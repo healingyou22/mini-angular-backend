@@ -25,7 +25,7 @@ foreach ($request->data->items as $item) {
     $item_date = $item->item_date;
     $item_nominal = $item->item_nominal;
 
-    if ($balanceNow >= $item_nominal) {
+    if ($balanceNow > 0 && $balanceNow >= $item_nominal) {
         $query = "INSERT INTO submission (id, employee_id, submission_date, item_name, item_date, item_nominal, unicode) VALUES (null, '{$employee_id}', '{$submission_date}', '{$item_name}', '{$item_date}', '{$item_nominal}', '{$unicode}')";
 
         if (mysqli_query($connect, $query)) {
